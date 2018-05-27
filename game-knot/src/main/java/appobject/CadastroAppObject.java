@@ -27,18 +27,9 @@ public class CadastroAppObject {
 		return this.driver.findElement(By.xpath("//*[@id=\"f-email\"]"));
 	}
 
-	public WebElement getConfirmEmailAddressTextField() {
-		return this.driver.findElement(By.xpath("//*[@id=\"f-email2\"]"));
-	}
-
-	public WebElement getRefferedByPlayerTextField() {
-		return this.driver.findElement(
-				By.xpath("//*[@id=\"queen-pic\"]/table/tbody/tr/td/div/form/table/tbody/tr[7]/td[2]/input"));
-	}
-
 	public WebElement getCreateAccountButton() {
 		return this.driver.findElement(
-				By.xpath("//*[@id=\"queen-pic\"]/table/tbody/tr/td/div/form/table/tbody/tr[8]/td/input[1]"));
+				By.xpath("//*[@id=\"queen-pic\"]/table/tbody/tr/td/div/form/table/tbody/tr[6]/td/input[1]"));
 	}
 
 }

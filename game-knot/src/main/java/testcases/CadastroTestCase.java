@@ -33,10 +33,10 @@ public class CadastroTestCase {
 	@Test
 	public void testMain(){
 		
-		this.cadastro.preencherCadastro("Leonora", "a852963b", "a852963b", "s2bleonora@gmail.com", "s2bleonora@gmail.com", "leonoras2b");
+		this.cadastro.preencherCadastro("alices2b", "a852963b", "a852963b", "s2balice@gmail.com");
 		this.cadastro.criarConta();
 		
-		this.cadastro2.preencherCadastro("Joao", "a741852b", "a741852", "s2bjoao@gmail.com", "s2bjoao@gmail.com", "joaos2b");
+		this.cadastro2.preencherCadastro("joaos2b", "a741852b", "a741852b", "s2bjoao@gmail.com");
 		this.cadastro2.criarConta();
 		
 	}

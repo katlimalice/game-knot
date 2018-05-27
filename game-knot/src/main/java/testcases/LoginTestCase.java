@@ -33,10 +33,10 @@ public class LoginTestCase {
 	@Test
 	public void testMain() {
 
-		this.login.preencherLogin("katlim", "ab123456");
+		this.login.preencherLogin("alices2b", "a852963b");
 		this.login.entrar();
 
-		this.login2.preencherLogin("joao", "ba456789");
+		this.login2.preencherLogin("joaos2b", "a741852b");
 		this.login2.entrar();
 
 	}
