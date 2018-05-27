@@ -2,14 +2,14 @@ package tasks;
 
 import org.openqa.selenium.WebDriver;
 
-import appobject.CadastroAppObject;
+import appobject.RegisterAppObject;
 
-public class CadastroTask {
+public class RegisterTask {
 
-	private CadastroAppObject cadastroAppObject;
+	private RegisterAppObject cadastroAppObject;
 
-	public CadastroTask(WebDriver driver) {
-		this.cadastroAppObject = new CadastroAppObject(driver);
+	public RegisterTask(WebDriver driver) {
+		this.cadastroAppObject = new RegisterAppObject(driver);
 	}
 
 	public void preencherCadastro(String username, String password, String confirmPassword, String emailAddress) {

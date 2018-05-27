@@ -7,15 +7,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import tasks.CadastroTask;
+import tasks.RegisterTask;
 
-public class CadastroTestCase {
+public class RegisterTestCase {
 
 	private WebDriver driver;
-	private CadastroTask cadastro;
+	private RegisterTask cadastro;
 
 	private WebDriver driver2;
-	private CadastroTask cadastro2;
+	private RegisterTask cadastro2;
 
 	@Before
 	public void SetUp() {
@@ -23,11 +23,11 @@ public class CadastroTestCase {
 
 		this.driver = new ChromeDriver();
 		this.driver.get("https://gameknot.com/register.pl");
-		this.cadastro = new CadastroTask(driver);
+		this.cadastro = new RegisterTask(driver);
 
 		this.driver2 = new ChromeDriver();
 		this.driver2.get("https://gameknot.com/register.pl");
-		this.cadastro2 = new CadastroTask(driver2);
+		this.cadastro2 = new RegisterTask(driver2);
 	}
 
 	@Test
