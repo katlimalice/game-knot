@@ -31,20 +31,20 @@ public class LoginAndGameTestCase {
 	}
 
 	@Test
-	public void testMain() {
+	public void testLoginAliceAndChallengeJoaoRandomColorAndPublicGame() {
 
 		this.aliceLoginTask.fillLogin("alices2b", "a852963b");
 		this.aliceLoginTask.doLogin();
+		this.aliceLoginTask.challengeGameAlice("joaos2b", "3 Days", "random color", "public");
+
+	}
+
+	public void testLoginJoaoAndAceptChallengeAliceRandomColorAndPublicGame() {
 
 		this.joaoLoginTask.fillLogin("joaos2b", "a741852b");
 		this.joaoLoginTask.doLogin();
+		this.joaoLoginTask.joaoAceptChallengeAndPlay();
 
-	}
-	
-	@Test
-	public void testChallengeJoao()
-	{
-		
 	}
 
 	@After
