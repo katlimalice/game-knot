@@ -53,4 +53,30 @@ public class GameAppObject {
 		return this.driver.findElement(By.xpath("//*[@id=\"question-form\"]/tbody/tr/td/table/tbody/tr/td/div/table/tbody/tr/td[2]/form/input[3]"));
 	}
 	
+	public WebElement getBoardF2WhitePerspectiveDiv() {
+		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[42]"));
+	}
+	
+	public WebElement getBoardF3WhitePerspectiveDiv() {
+		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[43]"));
+	}
+	
+	public WebElement getBoardE7BlackPerspectiveDiv() {
+		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[39]"));
+	}
+	
+	public WebElement getBoardE5BlackPerspectiveDiv() {
+		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[37]"));
+	}
+	
+	public WebElement getBoardG2WhitePerspectiveDiv() {
+		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[50]"));
+	}
+	
+	public WebElement getBoardG4WhitePerspectiveDiv() {
+		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[52]"));
+	}
+	
+	
+	
 }
