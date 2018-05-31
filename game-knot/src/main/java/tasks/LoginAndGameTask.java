@@ -12,12 +12,18 @@ public class LoginAndGameTask {
 
 	public LoginAndGameTask(WebDriver driver) {
 		this.loginAppObject = new LoginAppObject(driver);
+		this.gameAppObject = new GameAppObject(driver);
+				
 	}
 
 	public void fillLogin(String username, String password) {
 		this.loginAppObject.getLoginTextField().sendKeys(username);
 		this.loginAppObject.getSenhaTextField().sendKeys(password);
 		this.loginAppObject.getKeepLoggedCheckBox().click();
+	}
+
+	public void doLogin() {
+		this.loginAppObject.getLogInButton().click();
 	}
 
 	public void challengeGameAlice(String username, String timeDays, String color, String gameType) {
@@ -31,8 +37,12 @@ public class LoginAndGameTask {
 		this.gameAppObject.getGameTypeComboBox().sendKeys(Keys.ARROW_DOWN);
 		this.gameAppObject.getGameTypeComboBox().sendKeys(Keys.ENTER);
 		this.gameAppObject.getStartGameButton().click();
-		
 
+	}
+	
+	public void executeMoves () {
+		
+		
 	}
 
 	public void joaoAceptChallengeAndPlay() {
@@ -40,10 +50,6 @@ public class LoginAndGameTask {
 		this.gameAppObject.getChallengeFromAliceButton().click();
 		this.gameAppObject.getAcceptChallengeButton().click();
 
-	}
-
-	public void doLogin() {
-		this.loginAppObject.getLogInButton().click();
 	}
 
 	public void challengeJoao() {

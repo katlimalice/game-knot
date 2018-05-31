@@ -46,7 +46,7 @@ public class GameAppObject {
 	}
 
 	public WebElement getChallengeFromAliceButton() {
-		return this.driver.findElement(By.xpath("//*[@id=\"gk_wrap\"]/table/tbody/tr/td[1]/table[1]/tbody/tr[6]/td[1]/a"));
+		return this.driver.findElement(By.xpath("//*[@id=\"gk_wrap\"]/table/tbody/tr/td[1]/table[1]/tbody/tr[4]/td[1]/a"));
 	}
 
 	public WebElement getAcceptChallengeButton() {
