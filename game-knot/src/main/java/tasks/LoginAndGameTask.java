@@ -13,7 +13,7 @@ public class LoginAndGameTask {
 	public LoginAndGameTask(WebDriver driver) {
 		this.loginAppObject = new LoginAppObject(driver);
 		this.gameAppObject = new GameAppObject(driver);
-				
+
 	}
 
 	public void fillLogin(String username, String password) {
@@ -39,11 +39,6 @@ public class LoginAndGameTask {
 		this.gameAppObject.getStartGameButton().click();
 
 	}
-	
-	public void executeMoves () {
-		
-		
-	}
 
 	public void joaoAceptChallengeAndPlay() {
 		this.gameAppObject.getMyGamesInProgressButton().click();
@@ -52,7 +47,30 @@ public class LoginAndGameTask {
 
 	}
 
-	public void challengeJoao() {
+	public void executeMoveWhitePerspectiveF2toF3() {
+		this.gameAppObject.getBoardF2WhitePerspectiveDiv().click();
+		this.gameAppObject.getBoardF3WhitePerspectiveDiv().click();
+		this.gameAppObject.getSubmitButton().click();
 
 	}
+
+	public void executeMoveBlackPerspectiveE7toE5() {
+		this.gameAppObject.getBoardE7BlackPerspectiveDiv().click();
+		this.gameAppObject.getBoardE5BlackPerspectiveDiv().click();
+		this.gameAppObject.getSubmitButton().click();
+
+	}
+
+	public void executeMoveWhitePerspectiveG2toG4() {
+		this.gameAppObject.getBoardG2WhitePerspectiveDiv().click();
+		this.gameAppObject.getBoardG4WhitePerspectiveDiv().click();
+		this.gameAppObject.getSubmitButton().click();
+	}
+
+	public void executeMoveBlackPerspectiveD8toH4() {
+		this.gameAppObject.getBoardD8BlackPerspectiveDiv().click();
+		this.gameAppObject.getBoardH4BlackPerspectiveDiv().click();
+		this.gameAppObject.getSubmitButton().click();
+	}
+
 }
