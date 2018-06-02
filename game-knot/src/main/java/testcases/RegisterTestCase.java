@@ -6,45 +6,48 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import framework.ScreenShot;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import tasks.RegisterTask;
 
 public class RegisterTestCase {
 
-	private WebDriver driver;
-	private RegisterTask cadastro;
+	private WebDriver aliceWebDriver;
+	private RegisterTask aliceRegister;
 
-	private WebDriver driver2;
-	private RegisterTask cadastro2;
+	private WebDriver joaoWebDriver;
+	private RegisterTask joaoRegister;
 
 	@Before
 	public void SetUp() {
 		WebDriverManager.chromedriver().setup();
 
-		this.driver = new ChromeDriver();
-		this.driver.get("https://gameknot.com/register.pl");
-		this.cadastro = new RegisterTask(driver);
+		this.aliceWebDriver = new ChromeDriver();
+		this.aliceWebDriver.get("https://gameknot.com/register.pl");
+		this.aliceRegister = new RegisterTask(aliceWebDriver);
 
-		this.driver2 = new ChromeDriver();
-		this.driver2.get("https://gameknot.com/register.pl");
-		this.cadastro2 = new RegisterTask(driver2);
+		this.joaoWebDriver = new ChromeDriver();
+		this.joaoWebDriver.get("https://gameknot.com/register.pl");
+		this.joaoRegister = new RegisterTask(joaoWebDriver);
 	}
 
 	@Test
 	public void testMain(){
 		
-		this.cadastro.preencherCadastro("alices2b", "a852963b", "a852963b", "s2balice@gmail.com");
-		this.cadastro.criarConta();
+		this.aliceRegister.preencherCadastro("alices2b2", "a852963b", "a852963b", "1alices2b1@gmail.com");
+		this.aliceRegister.criarConta();
 		
-		this.cadastro2.preencherCadastro("joaos2b", "a741852b", "a741852b", "s2bjoao@gmail.com");
-		this.cadastro2.criarConta();
+		this.joaoRegister.preencherCadastro("joaos2b2", "a741852b", "a741852b", "1joaos2b1@gmail.com");
+		this.joaoRegister.criarConta();
 		
+		ScreenShot.capture(this.aliceWebDriver);
+		ScreenShot.capture(this.joaoWebDriver);
 	}
 
 	@After
 	public void tearDown() {
-		this.driver.quit();
-		this.driver2.quit();
+		this.aliceWebDriver.quit();
+		this.joaoWebDriver.quit();
 	}
 
 }

@@ -1,7 +1,8 @@
 package tasks;
 
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import appobject.GameAppObject;
 import appobject.LoginAppObject;
@@ -30,12 +31,9 @@ public class LoginAndGameTask {
 		this.gameAppObject.getStartNewGameButton().click();
 		this.gameAppObject.getPlayerUserNameTextField().sendKeys(username);
 		this.gameAppObject.getChallengeButton().click();
-		this.gameAppObject.getTimePerMoveComboBox().sendKeys(Keys.ARROW_DOWN);
-		this.gameAppObject.getTimePerMoveComboBox().sendKeys(Keys.ENTER);
-		this.gameAppObject.getPlayAsColorComboBox().sendKeys(Keys.ARROW_DOWN);
-		this.gameAppObject.getPlayAsColorComboBox().sendKeys(Keys.ENTER);
-		this.gameAppObject.getGameTypeComboBox().sendKeys(Keys.ARROW_DOWN);
-		this.gameAppObject.getGameTypeComboBox().sendKeys(Keys.ENTER);
+		this.gameAppObject.getTimePerMoveComboBox().selectByVisibleText(timeDays);
+		this.gameAppObject.getPlayAsColorComboBox().selectByVisibleText(color);
+		this.gameAppObject.getGameTypeComboBox().selectByVisibleText(gameType);
 		this.gameAppObject.getStartGameButton().click();
 
 	}
@@ -47,29 +45,35 @@ public class LoginAndGameTask {
 
 	}
 
+	public void executeMove(WebElement element) {
+
+		JavascriptExecutor executor = (JavascriptExecutor) this.gameAppObject.getDriver();
+		executor.executeScript("arguments[0].click()", element);
+	}
+
 	public void executeMoveWhitePerspectiveF2toF3() {
-		this.gameAppObject.getBoardF2WhitePerspectiveDiv().click();
-		this.gameAppObject.getBoardF3WhitePerspectiveDiv().click();
+		executeMove(this.gameAppObject.getBoardF2WhitePerspectiveDiv());
+		executeMove(this.gameAppObject.getBoardF3WhitePerspectiveDiv());
 		this.gameAppObject.getSubmitButton().click();
 
 	}
 
 	public void executeMoveBlackPerspectiveE7toE5() {
-		this.gameAppObject.getBoardE7BlackPerspectiveDiv().click();
-		this.gameAppObject.getBoardE5BlackPerspectiveDiv().click();
+		executeMove(this.gameAppObject.getBoardE7BlackPerspectiveDiv());
+		executeMove(this.gameAppObject.getBoardE5BlackPerspectiveDiv());
 		this.gameAppObject.getSubmitButton().click();
 
 	}
 
 	public void executeMoveWhitePerspectiveG2toG4() {
-		this.gameAppObject.getBoardG2WhitePerspectiveDiv().click();
-		this.gameAppObject.getBoardG4WhitePerspectiveDiv().click();
+		executeMove(this.gameAppObject.getBoardG2WhitePerspectiveDiv());
+		executeMove(this.gameAppObject.getBoardG4WhitePerspectiveDiv());
 		this.gameAppObject.getSubmitButton().click();
 	}
 
 	public void executeMoveBlackPerspectiveD8toH4() {
-		this.gameAppObject.getBoardD8BlackPerspectiveDiv().click();
-		this.gameAppObject.getBoardH4BlackPerspectiveDiv().click();
+		executeMove(this.gameAppObject.getBoardD8BlackPerspectiveDiv());
+		executeMove(this.gameAppObject.getBoardH4BlackPerspectiveDiv());
 		this.gameAppObject.getSubmitButton().click();
 	}
 
