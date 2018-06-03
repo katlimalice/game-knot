@@ -1,11 +1,16 @@
 package tasks;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.interactions.Action;
+//import org.openqa.selenium.interactions.Actions;
 
 import appobject.GameAppObject;
 import appobject.LoginAppObject;
+//import framework.ScreenShot;
 
 public class LoginAndGameTask {
 	private LoginAppObject loginAppObject;
@@ -40,41 +45,47 @@ public class LoginAndGameTask {
 
 	public void joaoAceptChallengeAndPlay() {
 		this.gameAppObject.getMyGamesInProgressButton().click();
-		this.gameAppObject.getChallengeFromAliceButton().click();
+		this.gameAppObject.getChallengeGoToNextGameButton().click();
 		this.gameAppObject.getAcceptChallengeButton().click();
 
 	}
+	
+	public void gotoGamePage() throws Throwable {
+		this.gameAppObject.getChallengeGoToNextGameButton().click();
+		TimeUnit.SECONDS.sleep(5);
+	}
 
-	public void executeMove(WebElement element) {
-
+	
+	public void executeMove(WebDriver driver, String from, String to)
+	{
+		String j  = "document.getElementsByName('fr')[0].value = '" + from + "'; ";
+		       j += "document.getElementsByName('to')[0].value = '" + to + "'; ";
+		       j += "document.getElementsByName('sm')[0].disabled = false; ";
+		       j += "pre_submit_move(); ";
+		       j += "document.getElementsByName('submitmove')[0].submit()";
+		       
 		JavascriptExecutor executor = (JavascriptExecutor) this.gameAppObject.getDriver();
-		executor.executeScript("arguments[0].click()", element);
+		executor.executeScript(j);		       
 	}
 
-	public void executeMoveWhitePerspectiveF2toF3() {
-		executeMove(this.gameAppObject.getBoardF2WhitePerspectiveDiv());
-		executeMove(this.gameAppObject.getBoardF3WhitePerspectiveDiv());
-		this.gameAppObject.getSubmitButton().click();
-
+	public void executeMoveWhitePerspectiveF2toF3(WebDriver driver) {
+		executeMove(driver, "f2", "f3");
 	}
 
-	public void executeMoveBlackPerspectiveE7toE5() {
-		executeMove(this.gameAppObject.getBoardE7BlackPerspectiveDiv());
-		executeMove(this.gameAppObject.getBoardE5BlackPerspectiveDiv());
-		this.gameAppObject.getSubmitButton().click();
-
+	public void executeMoveBlackPerspectiveE7toE5(WebDriver driver) {
+		executeMove(driver, "e7", "e5");
 	}
 
-	public void executeMoveWhitePerspectiveG2toG4() {
-		executeMove(this.gameAppObject.getBoardG2WhitePerspectiveDiv());
-		executeMove(this.gameAppObject.getBoardG4WhitePerspectiveDiv());
-		this.gameAppObject.getSubmitButton().click();
+	public void executeMoveWhitePerspectiveG2toG4(WebDriver driver) {
+		executeMove(driver, "g2", "g4");
 	}
 
-	public void executeMoveBlackPerspectiveD8toH4() {
-		executeMove(this.gameAppObject.getBoardD8BlackPerspectiveDiv());
-		executeMove(this.gameAppObject.getBoardH4BlackPerspectiveDiv());
-		this.gameAppObject.getSubmitButton().click();
+	public void executeMoveBlackPerspectiveD8toH4(WebDriver driver) {
+		executeMove(driver, "d8", "h4");
 	}
 
+	public void gotoGameListPage(WebDriver driver, String player) throws Throwable
+	{
+		driver.get("http://gameknot.com/play-chess.pl?iu=" + player);
+	}
 }

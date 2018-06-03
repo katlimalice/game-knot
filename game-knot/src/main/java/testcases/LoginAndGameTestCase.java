@@ -1,5 +1,7 @@
 package testcases;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,6 +18,9 @@ import verificationpoints.GameVerificationPoints;
 @FixMethodOrder(MethodSorters.JVM)
 public class LoginAndGameTestCase {
 
+	private String joaoUserName = "joaos2b2";
+	private String aliceUserName = "alices2b2";
+	
 	private WebDriver aliceWebDriver;
 	private LoginAndGameTask aliceLoginAndGameTask;
 
@@ -37,10 +42,10 @@ public class LoginAndGameTestCase {
 		this.joaoWebDriver.get("https://gameknot.com/");
 		this.joaoLoginAndGameTask = new LoginAndGameTask(joaoWebDriver);
 
-		this.aliceLoginAndGameTask.fillLogin("alices2b2", "a852963b");
+		this.aliceLoginAndGameTask.fillLogin(this.aliceUserName, "a852963b");
 		this.aliceLoginAndGameTask.doLogin();
 
-		this.joaoLoginAndGameTask.fillLogin("joaos2b2", "a741852b");
+		this.joaoLoginAndGameTask.fillLogin(this.joaoUserName, "a741852b");
 		this.joaoLoginAndGameTask.doLogin();
 
 		this.aliceVerificationPoint = new GameVerificationPoints(aliceWebDriver);
@@ -48,9 +53,9 @@ public class LoginAndGameTestCase {
 
 	}
 
-	@Test
+	//@Test
 	public void testLoginAliceAndChallengeJoaoRandomColor() {
-		this.aliceLoginAndGameTask.challengeGameAlice("joaos2b2", "4 Days", "random color", "private");
+		this.aliceLoginAndGameTask.challengeGameAlice("joaos2b2", "4 days", "random color", "private");
 		this.joaoLoginAndGameTask.joaoAceptChallengeAndPlay();
 
 		ScreenShot.capture(this.aliceWebDriver);
@@ -58,34 +63,65 @@ public class LoginAndGameTestCase {
 	}
 
 	@Test
-	public void testLoginAliceAndChallengeJoaoWhiteColor() {
-		this.aliceLoginAndGameTask.challengeGameAlice("joaos2b2", "4 Days", "white", "private");
-		this.joaoLoginAndGameTask.joaoAceptChallengeAndPlay();
-		this.aliceLoginAndGameTask.executeMoveWhitePerspectiveF2toF3();
-		this.joaoLoginAndGameTask.executeMoveBlackPerspectiveE7toE5();
-		this.aliceLoginAndGameTask.executeMoveWhitePerspectiveG2toG4();
-		this.joaoLoginAndGameTask.executeMoveBlackPerspectiveD8toH4();
+	public void testLoginAliceAndChallengeJoaoWhiteColor() throws Throwable {
+
+			this.aliceLoginAndGameTask.challengeGameAlice("joaos2b2", "4 days", "white", "private");
+			this.aliceLoginAndGameTask.gotoGameListPage(this.aliceWebDriver, this.aliceUserName);
+			this.aliceLoginAndGameTask.gotoGamePage();
+			
+			this.joaoLoginAndGameTask.joaoAceptChallengeAndPlay();
+			this.joaoLoginAndGameTask.gotoGameListPage(this.joaoWebDriver, this.joaoUserName);
+			this.joaoLoginAndGameTask.gotoGamePage();
+			
+			this.aliceLoginAndGameTask.executeMoveWhitePerspectiveF2toF3(this.aliceWebDriver);
+			this.aliceLoginAndGameTask.gotoGameListPage(this.aliceWebDriver, this.aliceUserName);
+			this.aliceLoginAndGameTask.gotoGamePage();
+			
+			this.joaoLoginAndGameTask.executeMoveBlackPerspectiveE7toE5(this.joaoWebDriver);
+			this.joaoLoginAndGameTask.gotoGameListPage(this.joaoWebDriver, this.joaoUserName);
+			this.joaoLoginAndGameTask.gotoGamePage();
+			
+			this.aliceLoginAndGameTask.executeMoveWhitePerspectiveG2toG4(this.aliceWebDriver);
+			this.aliceLoginAndGameTask.gotoGameListPage(this.aliceWebDriver, this.aliceUserName);
+			this.aliceLoginAndGameTask.gotoGamePage();
+			
+			this.joaoLoginAndGameTask.executeMoveBlackPerspectiveD8toH4(this.joaoWebDriver);
 
 		try {
 			joaoVerificationPoint.checkCheckMateMessage();
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw e;
 		}
 
 		ScreenShot.capture(this.aliceWebDriver);
 		ScreenShot.capture(this.joaoWebDriver);
-
 	}
 
 	@Test
-	public void testLoginAliceAndChallengeJoaoBlackColor() {
-		this.aliceLoginAndGameTask.challengeGameAlice("joaos2b2", "4 Days", "black", "private");
+	public void testLoginAliceAndChallengeJoaoBlackColor() throws Throwable {
+		this.aliceLoginAndGameTask.challengeGameAlice("joaos2b2", "4 days", "black", "private");
+		this.aliceLoginAndGameTask.gotoGameListPage(this.aliceWebDriver, this.aliceUserName);
+		this.aliceLoginAndGameTask.gotoGamePage();
+		
 		this.joaoLoginAndGameTask.joaoAceptChallengeAndPlay();
-		this.joaoLoginAndGameTask.executeMoveWhitePerspectiveF2toF3();
-		this.aliceLoginAndGameTask.executeMoveBlackPerspectiveE7toE5();
-		this.joaoLoginAndGameTask.executeMoveWhitePerspectiveG2toG4();
-		this.aliceLoginAndGameTask.executeMoveBlackPerspectiveD8toH4();
+		this.joaoLoginAndGameTask.gotoGameListPage(this.joaoWebDriver, this.joaoUserName);
+		this.joaoLoginAndGameTask.gotoGamePage();
+			
+		this.joaoLoginAndGameTask.executeMoveWhitePerspectiveF2toF3(joaoWebDriver);
+		this.joaoLoginAndGameTask.gotoGameListPage(this.joaoWebDriver, this.joaoUserName);
+		this.joaoLoginAndGameTask.gotoGamePage();
+	
+		this.aliceLoginAndGameTask.executeMoveBlackPerspectiveE7toE5(aliceWebDriver);
+		this.aliceLoginAndGameTask.gotoGameListPage(this.aliceWebDriver, this.aliceUserName);
+		this.aliceLoginAndGameTask.gotoGamePage();
+		
+		this.joaoLoginAndGameTask.executeMoveWhitePerspectiveG2toG4(joaoWebDriver);
+		this.joaoLoginAndGameTask.gotoGameListPage(this.joaoWebDriver, this.joaoUserName);
+		this.joaoLoginAndGameTask.gotoGamePage();
+		
+		this.aliceLoginAndGameTask.executeMoveBlackPerspectiveD8toH4(aliceWebDriver);
 
 		try {
 			aliceVerificationPoint.checkCheckMateMessage();
@@ -99,12 +135,12 @@ public class LoginAndGameTestCase {
 
 	}
 	
-	@Test
+	//@Test 
 	public void testInvalidLogin() {
 		this.joaoLoginAndGameTask.fillLogin("joaos2b2", "b741852c");
 		this.joaoLoginAndGameTask.doLogin();
-		ScreenShot.capture(this.joaoWebDriver);
 		
+		ScreenShot.capture(this.joaoWebDriver);
 	}
 
 	@After

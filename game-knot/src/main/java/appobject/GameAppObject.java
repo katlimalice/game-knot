@@ -53,7 +53,7 @@ public class GameAppObject {
 		return this.driver.findElement(By.xpath("//*[@id=\"gk_wrap\"]/table[1]/tbody/tr/td[1]/div/a[2]"));
 	}
 
-	public WebElement getChallengeFromAliceButton() {
+	public WebElement getChallengeGoToNextGameButton() {
 		return this.driver
 				.findElement(By.xpath("//*[@id=\"gk_wrap\"]/table/tbody/tr/td[1]/table[1]/tbody/tr[4]/td[1]/a"));
 	}
@@ -63,41 +63,8 @@ public class GameAppObject {
 				"//*[@id=\"question-form\"]/tbody/tr/td/table/tbody/tr/td/div/table/tbody/tr/td[2]/form/input[3]"));
 	}
 
-	public WebElement getBoardF2WhitePerspectiveDiv() {
-		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[42]"));
-	}
-
-	public WebElement getBoardF3WhitePerspectiveDiv() {
-		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[43]"));
-	}
-
-	public WebElement getBoardE7BlackPerspectiveDiv() {
-		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[39]"));
-	}
-
-	public WebElement getBoardE5BlackPerspectiveDiv() {
-		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[37]"));
-	}
-
-	public WebElement getBoardG2WhitePerspectiveDiv() {
-		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[50]"));
-	}
-
-	public WebElement getBoardG4WhitePerspectiveDiv() {
-		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[52]"));
-	}
-
-	public WebElement getBoardD8BlackPerspectiveDiv() {
-		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[32]"));
-	}
-
-	public WebElement getBoardH4BlackPerspectiveDiv() {
-		return this.driver.findElement(By.xpath("//*[@id=\"game-board-acboard\"]/div[60]"));
-	}
-
 	public WebElement getSubmitButton() {
 		return this.driver.findElement(
 				By.xpath("//*[@id=\"submit-move-form\"]/table/tbody/tr/td/div/form/table/tbody/tr[2]/td/input[1]"));
 	}
-
 }
