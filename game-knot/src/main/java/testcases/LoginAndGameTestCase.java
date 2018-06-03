@@ -98,6 +98,14 @@ public class LoginAndGameTestCase {
 		ScreenShot.capture(this.joaoWebDriver);
 
 	}
+	
+	@Test
+	public void testInvalidLogin() {
+		this.joaoLoginAndGameTask.fillLogin("joaos2b2", "b741852c");
+		this.joaoLoginAndGameTask.doLogin();
+		ScreenShot.capture(this.joaoWebDriver);
+		
+	}
 
 	@After
 	public void tearDown() {

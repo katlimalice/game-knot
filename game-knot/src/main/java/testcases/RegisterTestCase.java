@@ -32,7 +32,7 @@ public class RegisterTestCase {
 	}
 
 	@Test
-	public void testMain(){
+	public void testRegisterUsers(){
 		
 		this.aliceRegister.preencherCadastro("alices2b2", "a852963b", "a852963b", "1alices2b1@gmail.com");
 		this.aliceRegister.criarConta();
@@ -42,6 +42,22 @@ public class RegisterTestCase {
 		
 		ScreenShot.capture(this.aliceWebDriver);
 		ScreenShot.capture(this.joaoWebDriver);
+	}
+	
+	@Test
+	public void testRegisterDuplicatedUser() {
+		this.joaoRegister.preencherCadastro("joaos2b2", "a741852b", "a741852b", "1joaos2b1@gmail.com");
+		this.joaoRegister.criarConta();
+		ScreenShot.capture(this.joaoWebDriver);
+		
+	}
+	
+	@Test
+	public void testRegisterInvalidUser() {
+		this.joaoRegister.preencherCadastro("joaos2b2", "a741852b", "a741852b", "kalim94@gmail.com");
+		this.joaoRegister.criarConta();
+		ScreenShot.capture(this.joaoWebDriver);
+		
 	}
 
 	@After
