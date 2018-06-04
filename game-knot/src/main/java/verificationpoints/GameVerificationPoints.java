@@ -12,7 +12,6 @@ public class GameVerificationPoints {
 
 	public GameVerificationPoints(WebDriver driver) {
 		this.driver = driver;
-
 	}
 
 	public void checkCheckMateMessage() throws Throwable {
