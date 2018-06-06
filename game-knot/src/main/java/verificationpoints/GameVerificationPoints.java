@@ -1,7 +1,5 @@
 package verificationpoints;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +12,7 @@ public class GameVerificationPoints {
 		this.driver = driver;
 	}
 
-	public void checkCheckMateMessage() throws Throwable {
+	public void checkCheckMateMessage() {
 		WebElement message;
 		WebElement victoryMessage;
 		message = this.driver.findElement(By.xpath("//*[@id=\"game-board-check_status\"]/em"));
@@ -26,15 +24,76 @@ public class GameVerificationPoints {
 
 			if (mate.toUpperCase().contains("CHECKMATE")) {
 				if (win.toUpperCase().contains("BLACK")) {
-					TimeUnit.SECONDS.sleep(5);
+
 					System.out.println("Black Wins");
+
 				} else if (win.toUpperCase().contains("WHITE")) {
-					TimeUnit.SECONDS.sleep(5);
+
 					System.out.println("White Wins");
 				}
 			} else {
 				System.out.println("Error!");
 			}
+		}
+	}
+
+	public void checkConfirmMoves(int totMovesPlayed) {
+		WebElement moves;
+
+		moves = this.driver.findElement(By.xpath("//*[@id=\"game-board-moves\"]"));
+
+		if (moves != null) {
+			String firstMove = moves.getAttribute("innerHTML");
+			String secondMove = moves.getAttribute("innerHTML");
+			String thirdMove = moves.getAttribute("innerHTML");
+			String fourthMove = moves.getAttribute("innerHTML");
+
+			if (totMovesPlayed >= 1) {
+				if (firstMove.toUpperCase().contains("F3")) {
+
+					System.out.println("Test passed for the first move!");
+
+				} else {
+
+					System.out.println("Test failed for the first move!");
+				}
+			}
+
+			if (totMovesPlayed >= 2) {
+				if (secondMove.toUpperCase().contains("E5")) {
+
+					System.out.println("Test passed for the second move!");
+
+				} else {
+
+					System.out.println("Test failed for the second move!");
+				}
+			}
+
+			if (totMovesPlayed >= 3) {
+				if (thirdMove.toUpperCase().contains("G4")) {
+
+					System.out.println("Test passed for the third move!");
+
+				} else {
+
+					System.out.println("Test failed for the third move!");
+				}
+			}
+
+			if (totMovesPlayed >= 4) {
+				if (fourthMove.toUpperCase().contains("H4")) {
+
+					System.out.println("Test passed for the fourth move!");
+
+				} else {
+
+					System.out.println("Test failed for the fourth move!");
+				}
+			}
+		} else {
+
+			System.out.println("Error!");
 		}
 	}
 }

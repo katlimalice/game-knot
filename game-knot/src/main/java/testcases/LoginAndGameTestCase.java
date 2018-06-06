@@ -91,7 +91,7 @@ public class LoginAndGameTestCase {
 	}
 
 	@Test
-	public void testLoginAliceAndChallengeJoaoWhiteColor() throws Throwable {
+	public void testLoginAlicePlayWithWhiteColorAndChallengeJoao() throws Throwable {
 
 		this.aliceLoginAndGameTask.challengeGameAlice("joaos2b2", "4 days", "white", "private");
 		this.aliceLoginAndGameTask.gotoGameListPage(this.aliceWebDriver, this.aliceUserName);
@@ -105,17 +105,39 @@ public class LoginAndGameTestCase {
 		this.aliceLoginAndGameTask.gotoGameListPage(this.aliceWebDriver, this.aliceUserName);
 		this.aliceLoginAndGameTask.gotoGamePage();
 
+		try {
+			aliceGameVerificationPoint.checkConfirmMoves(1);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		this.joaoLoginAndGameTask.executeMoveBlackPerspectiveE7toE5(this.joaoWebDriver);
 		this.joaoLoginAndGameTask.gotoGameListPage(this.joaoWebDriver, this.joaoUserName);
 		this.joaoLoginAndGameTask.gotoGamePage();
+
+		try {
+			joaoGameVerificationPoint.checkConfirmMoves(2);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		this.aliceLoginAndGameTask.executeMoveWhitePerspectiveG2toG4(this.aliceWebDriver);
 		this.aliceLoginAndGameTask.gotoGameListPage(this.aliceWebDriver, this.aliceUserName);
 		this.aliceLoginAndGameTask.gotoGamePage();
 
+		try {
+			aliceGameVerificationPoint.checkConfirmMoves(3);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		this.joaoLoginAndGameTask.executeMoveBlackPerspectiveD8toH4(this.joaoWebDriver);
 
 		try {
+			joaoGameVerificationPoint.checkConfirmMoves(4);
 			joaoGameVerificationPoint.checkCheckMateMessage();
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
@@ -128,7 +150,7 @@ public class LoginAndGameTestCase {
 	}
 
 	@Test
-	public void testLoginAliceAndChallengeJoaoBlackColor() throws Throwable {
+	public void testLoginAlicePlayWithBlackColorAndChallengeJoao() throws Throwable {
 		this.aliceLoginAndGameTask.challengeGameAlice("joaos2b2", "4 days", "black", "private");
 		this.aliceLoginAndGameTask.gotoGameListPage(this.aliceWebDriver, this.aliceUserName);
 		this.aliceLoginAndGameTask.gotoGamePage();
@@ -141,17 +163,41 @@ public class LoginAndGameTestCase {
 		this.joaoLoginAndGameTask.gotoGameListPage(this.joaoWebDriver, this.joaoUserName);
 		this.joaoLoginAndGameTask.gotoGamePage();
 
+		try {
+			joaoGameVerificationPoint.checkConfirmMoves(1);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		}
+
 		this.aliceLoginAndGameTask.executeMoveBlackPerspectiveE7toE5(aliceWebDriver);
 		this.aliceLoginAndGameTask.gotoGameListPage(this.aliceWebDriver, this.aliceUserName);
 		this.aliceLoginAndGameTask.gotoGamePage();
+
+		try {
+			aliceGameVerificationPoint.checkConfirmMoves(2);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		this.joaoLoginAndGameTask.executeMoveWhitePerspectiveG2toG4(joaoWebDriver);
 		this.joaoLoginAndGameTask.gotoGameListPage(this.joaoWebDriver, this.joaoUserName);
 		this.joaoLoginAndGameTask.gotoGamePage();
 
+		try {
+			joaoGameVerificationPoint.checkConfirmMoves(3);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		}
+
 		this.aliceLoginAndGameTask.executeMoveBlackPerspectiveD8toH4(aliceWebDriver);
 
 		try {
+			aliceGameVerificationPoint.checkConfirmMoves(4);
 			aliceGameVerificationPoint.checkCheckMateMessage();
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
