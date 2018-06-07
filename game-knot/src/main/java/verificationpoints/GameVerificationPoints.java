@@ -85,8 +85,8 @@ public class GameVerificationPoints {
 				}
 			}
 		} else {
-
 			System.out.println("Error!");
+			Assert.fail();
 		}
 	}
 }
