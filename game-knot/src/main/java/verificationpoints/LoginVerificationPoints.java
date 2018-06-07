@@ -1,5 +1,6 @@
 package verificationpoints;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,7 +11,6 @@ public class LoginVerificationPoints {
 
 	public LoginVerificationPoints(WebDriver driver) {
 		this.driver = driver;
-
 	}
 
 	public void checkInvalidUserMessage() {
@@ -21,12 +21,11 @@ public class LoginVerificationPoints {
 			String invalid = message.getAttribute("innerHTML");
 
 			if (invalid.toUpperCase().contains("USERNAME AND PASSWORD MISMATCH")) {
-
 				System.out.println("Test passed");
 
 			} else {
-
 				System.out.println("Error!");
+				Assert.fail();
 			}
 		}
 	}
@@ -36,16 +35,14 @@ public class LoginVerificationPoints {
 		message = this.driver.findElement(By.xpath("//*[@id=\"gk_wrap\"]/table[1]/tbody/tr/td[1]/div"));
 
 		if (message != null) {
-
 			String welcome = message.getAttribute("innerHTML");
 
 			if (welcome.toUpperCase().contains("WELCOME")) {
-
 				System.out.println("Test passed");
 
 			} else {
-
 				System.out.println("Error!");
+				Assert.fail();
 			}
 		}
 	}

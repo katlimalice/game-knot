@@ -1,5 +1,6 @@
 package verificationpoints;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,10 +21,10 @@ public class RegisterVerificationPoints {
 			String welcome = message.getAttribute("innerHTML");
 
 			if (welcome.toUpperCase().contains("ACCOUNT CREATED")) {
-			
-					System.out.println("Test passed");
+				System.out.println("Test passed");
 			} else {
 				System.out.println("Error!");
+				Assert.fail();
 			}
 		}
 	}
@@ -37,10 +38,10 @@ public class RegisterVerificationPoints {
 			String invalid = message.getAttribute("innerHTML");
 
 			if (invalid.toUpperCase().contains("ERROR")) {
-			
-					System.out.println("Test passed");
+				System.out.println("Test passed");
 			} else {
 				System.out.println("Error!");
+				Assert.fail();
 			}
 		}
 	}
